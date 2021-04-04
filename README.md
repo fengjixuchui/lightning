@@ -3,11 +3,8 @@
 Lightning is an easy to use single-header library that allows for fast IPC through a shared memory key-value store.
 
 ## Installation:
-Move lightning.hh to your project directory and add
-``
-#include "lightning.hh"
-``
-at the top of files where you will use it.
+Move lightning.hh to your project directory and add ``#include "lightning.hh"`` at the top of files where you will use it.
+
 Then, compile with ``-pthread``.
 
 
