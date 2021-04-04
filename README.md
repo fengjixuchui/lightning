@@ -1,6 +1,6 @@
-# lightning
+# Lightning
 ### lightning fast shared memory key-value store
-lightning is an easy to use single-header library that allows for fast IPC through a shared memory key-value store.
+Lightning is an easy to use single-header library that allows for fast IPC through a shared memory key-value store.
 
 ## Installation:
 Move lightning.hh to your project directory and add
@@ -12,17 +12,17 @@ Then, compile with ``-pthread``.
 
 
 ## Usage:
-``lightning.init()`` maps the store into the memory of the calling process. (also creates the store if it does not already exist)
+``lightning.init()`` Maps the store into the memory of the calling process. (also creates the store if it does not already exist)
 
 ``lightning.set(char *key, char *value)`` sets "key" to "value" in the store.
 
-``lightning.get(char *key)`` returns a pointer to the value associated with key in shared memory.
+``lightning.get(char *key)`` Returns a pointer to the value associated with key in shared memory.
 
-``lightning.rm(char *key)`` removes and frees the entry associated with key.
+``lightning.rm(char *key)`` Removes and frees the entry associated with key.
 
-``lightning.detach()`` unmaps the shared memory from the calling processes memory.
+``lightning.detach()`` Unmaps the shared memory from the calling processes memory.
 
-``lightning.close`` unmaps the shared memory from the calling processes memory, then destorys the shared memory.
+``lightning.close`` Unmaps the shared memory from the calling processes memory, then destorys the shared memory.
 
 
 ## Example:
