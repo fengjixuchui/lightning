@@ -1,0 +1,104 @@
+version 1:
+keys: strings
+values: strings
+
+
+// void *realloc()
+// {
+//     void *ptr_start_old = ptr_start;
+//     int shmid_old = shmid;
+//     shmid = shmget(key, shmsz * 2, 0666 | IPC_CREAT);
+//     shmctl(shmid, IPC_RMID, NULL);
+// }
+
+
+
+table will always start at ptr_start
+
+return (node**) shm_alloc(NBUCKETS * sizeof(node*));
+
+
+// void rm(char *key)
+// {
+//     // TODO: fix the fact that deletion will sever the linked list,
+//     // need to use more memory if using doubley linked list which is too expensive
+//
+//     node *c_node = (node*) off_to_ptr(table[hash(key)]);
+//     while (strcmp(key, (char*) off_to_ptr(c_node->key_off)) != 0)
+//     {
+//         c_node = (node*) off_to_ptr(c_node->next_off);
+//     }
+//
+//     memset(off_to_ptr(c_node->key_off), -1, strlen(off_to_ptr(c_node->key_off)));
+//     memset(off_to_ptr(c_node->value_off), -1, strlen(off_to_ptr(c_node->value_off)));
+//     memset(&c_node, -1, sizeof(c_node));
+// }
+
+if (ptr_next + sz >= ptr_start + CAPACITY)
+{
+    ptr_next = ptr_start;
+}
+
+
+todo: make safe
+todo: make it so running out of memory doesnt buffer forve
+
+
+
+// *count--;
+// if (*count = 0)
+// {
+//     sem_destroy(mut);
+//     shmdt(ptr_start);
+//     shmctl(shmid, IPC_RMID, NULL);
+// }
+
+// TODO: optimize with sephamores (atomic current chunk pointer)
+
+    // TODO: reread documentation for __builtin_prefetch
+
+
+add semaphore support
+
+remove need for CREAT_NEW
+
+http://www.csc.villanova.edu/~mdamian/threads/posixsem.html#init
+
+
+
+
+memory layout
+
+table
+mut
+# open instances
+
+
+
+
+
+
+move table alloc and mut alloc to same funciton
+
+move init to private and call in constructor
+
+
+void* table_alloc()
+{
+    // TODO: refactor to use shm_alloc
+
+    memset(ptr_start, 0, NBUCKETS * sizeof(node*));
+    ptr_next += NBUCKETS * sizeof(node*);
+    return ptr_start;
+}
+
+sem_t* mut_alloc()
+{
+    // NOTE: called directly after mut_alloc, so ptr_next must be directly after table
+    // TODO: refactor to use shm_alloc
+
+    memset(ptr_next, 0, sizeof(sem_t));
+    void *tmp = ptr_next;
+    ptr_next += sizeof(sem_t);
+    return (sem_t*) tmp;
+}
