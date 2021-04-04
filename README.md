@@ -59,6 +59,7 @@ int main()
     printf("get test_key: %s\n", value);
 
     lightning.rm("test_key");
+    printf("removed test_key\n");
 
     lightning.close();
 
