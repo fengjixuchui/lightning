@@ -1,5 +1,5 @@
 # Lightning
-### lightning fast shared memory key-value store
+### Lightning Fast Shared Memory Key-Value Store
 Lightning is an easy to use single-header library that allows for fast IPC through a shared memory key-value store.
 
 ## Installation:
