@@ -6,8 +6,8 @@
 *    |____/__\___  /|___|  /__| |___|  /__|___|  /\___  /
 *           /_____/      \/          \/        \//_____/
 *
-*          lightning fast IPC in a single header
-*                  written by null333
+*          lightning fast key-value store in a single header
+*                      written by null333
 */
 
 #include <sys/ipc.h>
