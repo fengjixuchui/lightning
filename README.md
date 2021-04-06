@@ -9,17 +9,17 @@ Then, compile with ``-pthread``.
 
 
 ## Usage:
-``lightning.init()`` Maps the store into the memory of the calling process. (also creates the store if it does not already exist)
+``Lightning::init()`` Maps the store into the memory of the calling process. (also creates the store if it does not already exist)
 
-``lightning.set(char *key, char *value)`` sets "key" to "value" in the store.
+``Lightning::set(char *key, char *value)`` sets "key" to "value" in the store.
 
-``lightning.get(char *key)`` Returns a pointer to the value associated with key in shared memory.
+``Lightning::get(char *key)`` Returns a pointer to the value associated with key in shared memory.
 
-``lightning.rm(char *key)`` Removes and frees the entry associated with key.
+``Lightning::rm(char *key)`` Removes and frees the entry associated with key.
 
-``lightning.detach()`` Unmaps the shared memory from the calling processes memory.
+``Lightning::detach()`` Unmaps the shared memory from the calling processes memory.
 
-``lightning.close`` Unmaps the shared memory from the calling processes memory, then destorys the shared memory.
+``Lightning::close()`` Unmaps the shared memory from the calling processes memory, then destorys the shared memory.
 
 
 ## Example:
